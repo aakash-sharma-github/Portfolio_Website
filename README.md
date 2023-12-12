@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Portfolio
 
-## Getting Started
+This personal portfolio is a web application built using Next.js, React.js, Tailwind CSS, Emailjs, and Framer Motion. It serves as a showcase of my work, skills, and experience.
 
-First, run the development server:
+## Installation
+
+To run this project locally, follow these steps:
+
+1. Clone the repository from GitHub:
+   ```bash
+   git clone https://github.com/aakash-sharma-github/Portfolio_Website.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Portfolio_Website
+   ```
+3. Install the required dependencies:
+   ```bash
+   npm install
+   ```
+
+## Usage
+
+To start the development server and view the portfolio:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Next.js**: Utilized for server-side rendering and optimized for production.
+- **React.js**: Used to build the user interface and manage the application's state.
+- **Tailwind CSS**: Employed for styling the components and creating a responsive layout.
+- **Emailjs**: Integrated for the contact form functionality and sending emails from the portfolio.
+- **Framer Motion**: Implemented for adding smooth animations to enhance the user experience.
 
-## Learn More
+## Configuration
 
-To learn more about Next.js, take a look at the following resources:
+Ensure to configure the necessary environment variables for Emailjs according to the provided API credentials and setup. This is my template of Emailjs.com
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![1702419253646](image/README/1702419253646.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+This portfolio is a personal project, but contributions, issues, and feature requests are welcome. Feel free to submit a pull request or open an issue on GitHub.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is open source.
+
+## Acknowledgements
+
+- Next.js
+- React.js
+- Tailwind CSS
+- Emailjs
+- Framer Motion
+- And all other dependencies used in the project.
+
+## Contact
+
+Thank you for checking out my portfolio! If you have any questions or suggestions, please don't hesitate to contact me, Aakash Sharma, at [aakashsharma9855@gmail.com](mailto:aakashsharma9855@gmail.com).
