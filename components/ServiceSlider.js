@@ -6,7 +6,6 @@ import {
   RxCamera,
   RxPencil2,
   RxDesktop,
-  RxReader,
   RxRocket,
   RxArrowTopRight
 } from "react-icons/rx";
@@ -38,11 +37,6 @@ const serviceData = [
     description:
       "Elevating your online presence, Through strategic keyword research, content optimization, and technical SEO enhancements."
   }
-  // {
-  //   icon: <RxReader />,
-  //   title: "Copywriting",
-  //   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-  // },
 ];
 
 const ServiceSlider = () => {
@@ -70,10 +64,10 @@ const ServiceSlider = () => {
           <SwiperSlide key={index}>
             <div className="bg-[rgba(65,47,123,0.15)] h-max rounded-lg px-6 py-8 flex sm:flex-col gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[rgba(89,65,169,0.15)] transition-all duration-300 ">
               {/* icon */}
-              <div className="text-4xl text-accent mb-2">{item.icon}</div>
+              <div className="text-2xl text-accent mb-2">{item.icon}</div>
               {/* title & description */}
               <div className="mb-8">
-                <div className="mb-2 text-lg">{item.title}</div>
+                <div className="mb-1 text-lg">{item.title}</div>
                 <p className="max-w-[380px] leading-normal">
                   {item.description}
                 </p>

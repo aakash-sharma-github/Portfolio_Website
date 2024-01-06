@@ -1,4 +1,3 @@
-import Circles from "../../components/Circles";
 import { BsArrowRight } from "react-icons/bs";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
@@ -43,7 +42,7 @@ const Contact = () => {
             exit="hidden"
             className="h2 text-center mb-12"
           >
-            Let's <span className="text-accent">Connect.</span>
+            Let&apos;s <span className="text-accent">Connect.</span>
           </motion.h2>
           {/* form  */}
           <motion.form

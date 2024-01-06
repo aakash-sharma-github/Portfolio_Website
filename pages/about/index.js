@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { fadeIn } from "../../variants";
 import { FaJava } from "react-icons/fa";
 import {
@@ -11,18 +12,19 @@ import {
   SiTailwindcss,
   SiMysql,
   SiMongodb,
-  SiReact,
-  SiGit,
-  SiGithub,
   SiPython,
-  SiBootstrap,
-  SiJavascript,
-  SiCss3,
-  SiHtml5
+  SiIntellijidea
 } from "react-icons/si";
-import Avatar from "../../components/Avatar";
+import {
+  RiHtml5Fill,
+  RiGithubFill,
+  RiCss3Fill,
+  RiGitBranchFill,
+  RiJavascriptFill,
+  RiBootstrapFill,
+  RiReactjsFill
+} from "react-icons/ri";
 import Circles from "../../components/Circles";
-import CountUp from "react-countup";
 
 //  data
 const aboutData = [
@@ -32,32 +34,37 @@ const aboutData = [
       {
         title: "Languages",
         icons: [
-          <SiHtml5 />,
-          <SiCss3 />,
-          <SiJavascript />,
-          <SiPython />,
-          <SiC />,
-          <SiCplusplus />,
-          <FaJava />
+          <RiHtml5Fill key="html5" />,
+          <RiCss3Fill key="css3" />,
+          <RiJavascriptFill key="javascript" />,
+          <SiPython key="python" />,
+          <SiC key="c" />,
+          <SiCplusplus key="cpp" />,
+          <FaJava key="java" />
         ]
       },
       {
         title: "Frameworks",
         icons: [
-          <SiReact />,
-          <SiNextdotjs />,
-          <SiNodedotjs />,
-          <SiTailwindcss />,
-          <SiBootstrap />
+          <RiReactjsFill key="react" />,
+          <SiNextdotjs key="nextjs" />,
+          <SiNodedotjs key="nodejs" />,
+          <SiTailwindcss key="tailwind" />,
+          <RiBootstrapFill key="bootstrap" />
         ]
       },
       {
         title: "Tools",
-        icons: [<SiGithub />, <SiGit />, <SiVisualstudiocode />]
+        icons: [
+          <RiGithubFill key="github" />,
+          <RiGitBranchFill key="git" />,
+          <SiVisualstudiocode key="vscode" />,
+          <SiIntellijidea key="intellijidea" />
+        ]
       },
       {
         title: "DataBase",
-        icons: [<SiMysql />, <SiMongodb />]
+        icons: [<SiMysql key="mysql" />, <SiMongodb key="mongo" />]
       }
     ]
   },
