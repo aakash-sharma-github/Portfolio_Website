@@ -36,10 +36,10 @@ const Contact = () => {
 
       if (!validate) {
         await emailjs.send(
-          'service_wjmqpzj',
-          'template_a5dlxtw',
+         process.env.SERVICE_KEY,
+          process.env.TEMPLATE_KEY,
           contact,
-          'OjsVVeDfhBZ7J37ZW'
+          process.env.PUBLIC_KEY
         )
       }
       if (!validate) {
