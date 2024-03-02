@@ -1,97 +1,172 @@
-import { BsArrowRight } from "react-icons/bs";
-import { motion } from "framer-motion";
-import emailjs from "emailjs-com";
-import { fadeIn } from "../../variants";
-import { useState } from "react";
+import React, { useState, useRef } from 'react'
+import { BsArrowRight } from 'react-icons/bs'
+import { motion } from 'framer-motion'
+import emailjs from 'emailjs-com'
+import { fadeIn } from '../../variants'
+// react-toastify imports
+import { ToastContainer, toast } from 'react-toastify'
 
 const Contact = () => {
-  const triggerEmail = async (data) => {
-    await emailjs
-      .send("service_wjmqpzj", "template_a5dlxtw", data, "OjsVVeDfhBZ7J37ZW")
-      .then((success) => {
-        alert("We will connect soon!");
-      })
-      .catch((error) => {
-        alert("Error:", error);
-      });
-  };
+  const initialState = {
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  }
+  const [contact, setContact] = useState(initialState)
 
-  const formSubmit = (e) => {
-    e.preventDefault();
-    // console.log(e.target);
-    const data = {
-      name: e.target[0].value,
-      email: e.target[1].value,
-      subject: e.target[2].value,
-      message: e.target[3].value
-    };
-    // console.log(data);
-    triggerEmail(data);
-  };
+  const handleChange = e => {
+    e.preventDefault()
+    const { name, value } = e.target
+    setContact(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+
+    try {
+      const validate =
+        contact.name === '' ||
+        contact.email === '' ||
+        contact.subject === '' ||
+        contact.message === ''
+
+      if (!validate) {
+        await emailjs.send(
+          'service_wjmqpzj',
+          'template_a5dlxtw',
+          contact,
+          'OjsVVeDfhBZ7J37ZW'
+        )
+      }
+      if (!validate) {
+        toast.success('We will contact you soon!', {
+          position: 'bottom-center',
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored'
+        })
+      } else if (validate) {
+        toast.warn('Please fill in all the fields', {
+          position: 'bottom-center',
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored'
+        })
+      }
+      setContact(initialState)
+    } catch (err) {
+      toast.error('Something went wrong!', {
+        position: 'bottom-center',
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored'
+      })
+      console.log(err)
+    }
+  }
 
   return (
-    <div className="h-full bg-primary/30">
-      <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
+    <div className='h-full bg-primary/30'>
+      <div className='container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full'>
         {/* text & form */}
-        <div className="flex flex-col w-full max-w-[700px]">
+        <div className='flex flex-col w-full max-w-[700px]'>
           {/* text  */}
           <motion.h2
-            variants={fadeIn("up", 0.2)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="h2 text-center mb-12"
+            variants={fadeIn('up', 0.2)}
+            initial='hidden'
+            animate='show'
+            exit='hidden'
+            className='h2 text-center mb-12'
           >
-            Let&apos;s <span className="text-accent">Connect.</span>
+            Let&apos;s <span className='text-accent'>Connect.</span>
           </motion.h2>
           {/* form  */}
           <motion.form
-            variants={fadeIn("up", 0.4)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            onSubmit={formSubmit}
-            action="#"
-            className="flex-1 flex flex-col gap-6 w-full mx-auto"
+            variants={fadeIn('up', 0.4)}
+            initial='hidden'
+            animate='show'
+            exit='hidden'
+            onSubmit={handleSubmit}
+            action='#'
+            className='flex-1 flex flex-col gap-6 w-full mx-auto'
           >
             {/* input group */}
-            <div className="flex gap-x-6 w-full">
+            <div className='flex gap-x-6 w-full'>
               <input
-                type="text"
-                placeholder="Full Name"
-                className="input normal-case"
+                type='text'
+                name='name'
+                value={contact.name}
+                onChange={handleChange}
+                placeholder='Full Name'
+                className='input normal-case'
               />
               <input
-                type="email"
-                placeholder="Email"
-                className="input normal-case"
+                type='email'
+                name='email'
+                value={contact.email}
+                onChange={handleChange}
+                placeholder='Email'
+                className='input normal-case'
               />
             </div>
             <input
-              type="text"
-              placeholder="Subject"
-              className="input normal-case"
+              type='text'
+              name='subject'
+              value={contact.subject}
+              onChange={handleChange}
+              placeholder='Subject'
+              className='input normal-case'
             />
             <textarea
-              placeholder="Message"
-              className="textarea normal-case"
+              placeholder='Message'
+              name='message'
+              value={contact.message}
+              rows={10}
+              onChange={handleChange}
+              className='textarea normal-case'
             ></textarea>
-            {/* <input type="submit" value={"submit"} /> */}
             <button
-              type="submit"
-              value={"Submit"}
-              className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
+              type='submit'
+              className='btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group'
             >
-              <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
+              <span className='group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'>
                 Connect
               </span>
-              <BsArrowRight className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]" />
+              <BsArrowRight className='-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]' />
             </button>
+            <ToastContainer
+              position='bottom-center'
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme='colored'
+            />
           </motion.form>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
