@@ -1,6 +1,5 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { fadeIn } from "../../variants";
 import { FaJava } from "react-icons/fa";
 import {

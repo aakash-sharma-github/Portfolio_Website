@@ -36,38 +36,14 @@ const Contact = () => {
 
       if (!validate) {
         await emailjs.send(
-         process.env.SERVICE_KEY,
+          process.env.SERVICE_KEY,
           process.env.TEMPLATE_KEY,
           contact,
           process.env.PUBLIC_KEY
         )
       }
-      if (!validate) {
-        toast.success('We will contact you soon!', {
-          position: 'bottom-center',
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'colored'
-        })
-      } else if (validate) {
-        toast.warn('Please fill in all the fields', {
-          position: 'bottom-center',
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'colored'
-        })
-      }
-      setContact(initialState)
-    } catch (err) {
-      toast.error('Something went wrong!', {
+
+      const toastVariables = {
         position: 'bottom-center',
         autoClose: 1500,
         hideProgressBar: false,
@@ -76,7 +52,15 @@ const Contact = () => {
         draggable: true,
         progress: undefined,
         theme: 'colored'
-      })
+      }
+      if (!validate) {
+        toast.success('We will contact you soon!', toastVariables)
+      } else if (validate) {
+        toast.warn('Please fill in all the fields', toastVariables)
+      }
+      setContact(initialState)
+    } catch (err) {
+      toast.error('Something went wrong!', toastVariables)
       console.log(err)
     }
   }
